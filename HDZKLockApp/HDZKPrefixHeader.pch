@@ -1,0 +1,29 @@
+//
+//  HDZKPrefixHeader.pch
+//  HDZKLockApp
+//
+//  Created by lq on 17/5/15.
+//  Copyright © 2017年 yzkj-HDZK. All rights reserved.
+//
+
+#ifdef __OBJC__
+
+#ifndef HDZKPrefixHeader_pch
+#define HDZKPrefixHeader_pch
+
+
+//Macros（宏）
+#import "AppMacro.h"
+#import "HttpMacro.h"
+#import "VendorMacro.h"
+
+
+//全局常量
+#import "NotificationContants.h"
+#import "AppConstants.h"
+
+
+#endif /* HDZKPrefixHeader_pch */
+
+
+#endif

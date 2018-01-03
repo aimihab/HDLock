@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="HDZKLockInfoViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.55000000000000004" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7L8-DR-seq">
+                        <rect key="frame" x="0.0" y="0.0" width="107" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="aUs-5B-VOf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal" title="0把\n授权钥匙"/>
+                        <connections>
+                            <action selector="buttonEvent:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KhQ-JX-yM2"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jk2-9X-1Xl">
+                        <rect key="frame" x="107" y="0.0" width="107" height="59"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="17p-fe-I8R"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal" title="0人\n授权用户"/>
+                        <connections>
+                            <action selector="buttonEvent:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VOh-M8-9Xj"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivB-eC-JYJ">
+                        <rect key="frame" x="214" y="0.0" width="106" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="sLN-pH-xrb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal" title="正常\n开锁记录"/>
+                        <connections>
+                            <action selector="buttonEvent:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sGa-fS-9gf"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lx4-ur-ISy" userLabel="lineView2">
+                        <rect key="frame" x="214" y="13" width="1" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="y6c-1q-Zge"/>
+                            <constraint firstAttribute="width" constant="1" id="zWv-27-Lbj"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Frx-Pp-DF8" userLabel="lineView1">
+                        <rect key="frame" x="108" y="13" width="1" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="JQk-3e-3Wa"/>
+                            <constraint firstAttribute="width" constant="1" id="lkp-0c-pre"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="ivB-eC-JYJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="5Mj-cy-Yms"/>
+                    <constraint firstItem="lx4-ur-ISy" firstAttribute="leading" secondItem="Jk2-9X-1Xl" secondAttribute="trailing" id="5SP-9P-HoC"/>
+                    <constraint firstItem="7L8-DR-seq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QBY-8Z-ZNt"/>
+                    <constraint firstItem="ivB-eC-JYJ" firstAttribute="leading" secondItem="Jk2-9X-1Xl" secondAttribute="trailing" id="SrT-DF-Wpf"/>
+                    <constraint firstItem="Jk2-9X-1Xl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Wh8-tS-1vG"/>
+                    <constraint firstItem="Jk2-9X-1Xl" firstAttribute="leading" secondItem="7L8-DR-seq" secondAttribute="trailing" id="XOF-Ai-GAF"/>
+                    <constraint firstItem="lx4-ur-ISy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="Y18-6h-RH0"/>
+                    <constraint firstAttribute="trailing" secondItem="ivB-eC-JYJ" secondAttribute="trailing" id="YnX-st-neV"/>
+                    <constraint firstItem="7L8-DR-seq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Yvb-bW-EUh"/>
+                    <constraint firstItem="Frx-Pp-DF8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="ccX-Jc-iIv"/>
+                    <constraint firstItem="Frx-Pp-DF8" firstAttribute="leading" secondItem="7L8-DR-seq" secondAttribute="trailing" constant="1" id="mdp-ae-H1w"/>
+                    <constraint firstItem="ivB-eC-JYJ" firstAttribute="height" secondItem="7L8-DR-seq" secondAttribute="height" id="mgS-cH-5nF"/>
+                    <constraint firstItem="Jk2-9X-1Xl" firstAttribute="width" secondItem="7L8-DR-seq" secondAttribute="width" id="pMj-QV-cKr"/>
+                    <constraint firstItem="ivB-eC-JYJ" firstAttribute="width" secondItem="7L8-DR-seq" secondAttribute="width" id="pq2-wa-cKt"/>
+                    <constraint firstItem="Jk2-9X-1Xl" firstAttribute="height" secondItem="7L8-DR-seq" secondAttribute="height" id="x6d-XP-waY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="authorKeyBtn" destination="7L8-DR-seq" id="3id-5Q-Vxr"/>
+                <outlet property="authorUserBtn" destination="Jk2-9X-1Xl" id="YiA-yv-69o"/>
+                <outlet property="normalRecordsBtn" destination="ivB-eC-JYJ" id="Arr-sV-3l3"/>
+            </connections>
+            <point key="canvasLocation" x="-240" y="-2"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,119 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking-Synchronous (1.1.0):
+    - AFNetworking-Synchronous/3.x (= 1.1.0)
+  - AFNetworking-Synchronous/3.x (1.1.0):
+    - AFNetworking (~> 3.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - BabyBluetooth (0.7.0)
+  - BANetManager (2.3.8.1):
+    - AFNetworking
+    - YYCache
+  - DZNEmptyDataSet (1.8.1)
+  - HandyFrame (1.1.3)
+  - HappyDNS (0.3.12)
+  - JKCountDownButton (1.2.0)
+  - JSONKit-NoWarning (1.2)
+  - LBXPermission (1.0.0)
+  - LBXScan/LBXNative (2.2):
+    - LBXScan/Types (~> 2.2)
+  - LBXScan/Types (2.2)
+  - LBXScan/UI (2.2):
+    - LBXScan/Types (~> 2.2)
+  - MBProgressHUD (1.1.0)
+  - MMDrawerController (0.6.0):
+    - MMDrawerController/Core (= 0.6.0)
+    - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
+    - MMDrawerController/MMDrawerVisualStates (= 0.6.0)
+    - MMDrawerController/Subclass (= 0.6.0)
+  - MMDrawerController/Core (0.6.0)
+  - MMDrawerController/MMDrawerBarButtonItem (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/MMDrawerVisualStates (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/Subclass (0.6.0):
+    - MMDrawerController/Core
+  - Popover.OC (2.1)
+  - PureCamera (1.5)
+  - Qiniu (7.2.1):
+    - HappyDNS (~> 0.3)
+  - Reachability (3.2)
+  - SDWebImage (4.2.2):
+    - SDWebImage/Core (= 4.2.2)
+  - SDWebImage/Core (4.2.2)
+  - YYCache (1.0.4)
+  - YYModel (1.0.4)
+  - YZCategory (1.0.0)
+
+DEPENDENCIES:
+  - AFNetworking
+  - AFNetworking-Synchronous
+  - BabyBluetooth (~> 0.7.0)
+  - BANetManager
+  - DZNEmptyDataSet
+  - HandyFrame
+  - HappyDNS
+  - JKCountDownButton
+  - JSONKit-NoWarning
+  - LBXPermission (~> 1.0.0)
+  - LBXScan/LBXNative (~> 2.0)
+  - LBXScan/UI (~> 2.0)
+  - MBProgressHUD
+  - MMDrawerController
+  - Popover.OC
+  - PureCamera
+  - Qiniu
+  - Reachability
+  - SDWebImage
+  - YYModel
+  - YZCategory (from `git@192.168.1.112:ios/YZCategoryFramework.git`, tag `master`)
+
+EXTERNAL SOURCES:
+  YZCategory:
+    :git: git@192.168.1.112:ios/YZCategoryFramework.git
+    :tag: master
+
+CHECKOUT OPTIONS:
+  YZCategory:
+    :git: git@192.168.1.112:ios/YZCategoryFramework.git
+    :tag: master
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AFNetworking-Synchronous: 61b98fb931b114b0da2b243957ea533e2954c2a2
+  BabyBluetooth: d50758aecf24d4a0ab9271d69f0f116d6bee51c9
+  BANetManager: 6acf487de2ae35013c0d0aed0710e629d211dd70
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  HandyFrame: 5fef3c197c383332d7d5c838b3f7a85ce2f8f9cc
+  HappyDNS: 691a3041128055d09866f86e6e9ca90f24da1f18
+  JKCountDownButton: cc72e24c8b73f232b15cc348277422b089d43bff
+  JSONKit-NoWarning: 3d27e6f9e6846ecf741e8c64dcadd7d5aa7193cb
+  LBXPermission: 87bce97b52ecf4ee7f45513d3260a5578e70d2d1
+  LBXScan: 31b69c9657404133324e6b68ef814802ef9cacc0
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
+  Popover.OC: 46f6bef0f13ae40afd45636ac297ca7eaf301bfa
+  PureCamera: 227000fb12f8900534cea7ecf168497249910683
+  Qiniu: 9fff909084b977d3be2cb6228a866c808406cb43
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
+  YYCache: 8105b6638f5e849296c71f331ff83891a4942952
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+  YZCategory: 67f11cf322544463f546f3666f3e1a3749b1c51b
+
+PODFILE CHECKSUM: 29e97bc876e1f81ce94a751a4c3b41adc2f0404a
+
+COCOAPODS: 1.2.1

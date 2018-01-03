@@ -1,0 +1,27 @@
+{
+  "name": "YZCategory",
+  "version": "1.0.0",
+  "summary": "iOS常用分类组件",
+  "description": "深圳市影踪网络科技有限iOS常用分类组件",
+  "homepage": "http://192.168.1.112/ios/YZCategoryFramework",
+  "license": "MIT",
+  "authors": {
+    "baoyx": "baoyx@szbailiao.com"
+  },
+  "source": {
+    "git": "git@192.168.1.112:ios/YZCategoryFramework.git",
+    "tag": "master"
+  },
+  "platforms": {
+    "ios": "7.1"
+  },
+  "requires_arc": true,
+  "source_files": [
+    "Class/Foundation/*.{h,m}",
+    "Class/*.h"
+  ],
+  "public_header_files": [
+    "Class/*.h",
+    "Class/Foundation/*.h"
+  ]
+}

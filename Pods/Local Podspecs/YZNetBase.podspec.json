@@ -1,0 +1,35 @@
+{
+  "name": "YZNetBase",
+  "version": "1.0.0",
+  "summary": "iOS网络基础组件",
+  "description": "深圳市影踪网络科技有限iOS网络基础组件",
+  "homepage": "hhttp://192.168.1.112/ios/YZLogFramework",
+  "license": "MIT",
+  "authors": {
+    "baoyx": "baoyx@szbailiao.com"
+  },
+  "source": {
+    "git": "git@192.168.1.112:ios/YZNetBaseFramework.git",
+    "tag": "master"
+  },
+  "platforms": {
+    "ios": "7.1"
+  },
+  "requires_arc": true,
+  "source_files": "Class/*.{h,m}",
+  "public_header_files": "Class/*.h",
+  "dependencies": {
+    "AFNetworking": [
+
+    ],
+    "Reachability": [
+
+    ],
+    "JSONKit-NoWarning": [
+
+    ],
+    "AFNetworking-Synchronous/3.x": [
+
+    ]
+  }
+}

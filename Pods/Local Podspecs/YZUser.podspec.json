@@ -1,0 +1,29 @@
+{
+  "name": "YZUser",
+  "version": "1.0.0",
+  "summary": "iOS用户中心",
+  "description": "深圳市影踪网络科技有限iOS用户中心组件组件",
+  "homepage": "http://192.168.1.112/ios/YZUserApi",
+  "license": "MIT",
+  "authors": {
+    "baoyx": "baoyx@szbailiao.com"
+  },
+  "source": {
+    "git": "git@192.168.1.112:ios/YZUserApi.git",
+    "tag": "master"
+  },
+  "platforms": {
+    "ios": "7.1"
+  },
+  "requires_arc": true,
+  "source_files": "Class/*.{h,m}",
+  "public_header_files": "Class/*.h",
+  "dependencies": {
+    "YYModel": [
+
+    ],
+    "Qiniu": [
+
+    ]
+  }
+}
