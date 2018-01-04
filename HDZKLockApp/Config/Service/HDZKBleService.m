@@ -7,6 +7,7 @@
 //
 
 #import "HDZKBleService.h"
+#import "TTC_Ble_Encryption_lib.h"
 #include "FingerLockApi.h"
 
 @implementation HDZKBleService
@@ -15,6 +16,11 @@
 
 
 
+
+
+
+
+#pragma mark - public
 
 
 

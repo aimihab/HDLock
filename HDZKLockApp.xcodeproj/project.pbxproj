@@ -68,6 +68,7 @@
 		091B93981FFB7D0C004F1274 /* libTTC_Ble_Encryption_lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 092FD0451FEBDB6D00C78C40 /* libTTC_Ble_Encryption_lib.a */; };
 		091B939C1FFB7F52004F1274 /* YZAuthID.m in Sources */ = {isa = PBXBuildFile; fileRef = 091B939B1FFB7F4A004F1274 /* YZAuthID.m */; };
 		091B93A71FFCB573004F1274 /* NSObject+LQCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 091B93A61FFCB573004F1274 /* NSObject+LQCoding.m */; };
+		091B93AB1FFE1381004F1274 /* DYDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 091B93AA1FFE1371004F1274 /* DYDeviceInfo.m */; };
 		09238B411FDA38BB00150FB2 /* HDZKLockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09238B401FDA38BB00150FB2 /* HDZKLockModel.m */; };
 		09238B441FDA42E300150FB2 /* HDZKAuthorUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09238B431FDA42E300150FB2 /* HDZKAuthorUserModel.m */; };
 		09238B471FDA6FB100150FB2 /* HDZKUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 09238B461FDA6FB100150FB2 /* HDZKUserData.m */; };
@@ -351,6 +352,8 @@
 		091B939B1FFB7F4A004F1274 /* YZAuthID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZAuthID.m; sourceTree = "<group>"; };
 		091B93A51FFCB573004F1274 /* NSObject+LQCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LQCoding.h"; sourceTree = "<group>"; };
 		091B93A61FFCB573004F1274 /* NSObject+LQCoding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LQCoding.m"; sourceTree = "<group>"; };
+		091B93A91FFE1371004F1274 /* DYDeviceInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYDeviceInfo.h; sourceTree = "<group>"; };
+		091B93AA1FFE1371004F1274 /* DYDeviceInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYDeviceInfo.m; sourceTree = "<group>"; };
 		09238B3F1FDA38BB00150FB2 /* HDZKLockModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDZKLockModel.h; sourceTree = "<group>"; };
 		09238B401FDA38BB00150FB2 /* HDZKLockModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDZKLockModel.m; sourceTree = "<group>"; };
 		09238B421FDA42E300150FB2 /* HDZKAuthorUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDZKAuthorUserModel.h; sourceTree = "<group>"; };
@@ -680,6 +683,7 @@
 		090B9EFA1FE281F2009DECC7 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				091B93A81FFE1371004F1274 /* DYDeviceInfo */,
 				091B93991FFB7F4A004F1274 /* YZAuthID */,
 				092FA3FE1FEB69F000C78C40 /* BLETools */,
 				09145ED81FE3705C00DEE686 /* YZNetBase */,
@@ -1041,6 +1045,15 @@
 				091B939B1FFB7F4A004F1274 /* YZAuthID.m */,
 			);
 			path = YZAuthID;
+			sourceTree = "<group>";
+		};
+		091B93A81FFE1371004F1274 /* DYDeviceInfo */ = {
+			isa = PBXGroup;
+			children = (
+				091B93A91FFE1371004F1274 /* DYDeviceInfo.h */,
+				091B93AA1FFE1371004F1274 /* DYDeviceInfo.m */,
+			);
+			path = DYDeviceInfo;
 			sourceTree = "<group>";
 		};
 		09238B3E1FDA386600150FB2 /* Models */ = {
@@ -1789,6 +1802,7 @@
 				09238B501FDE316A00150FB2 /* HDZKAuthorKeyModel.m in Sources */,
 				091B938B1FF0D914004F1274 /* UIButton+Layout.m in Sources */,
 				09238B4D1FDA810600150FB2 /* HDAuthorKeyService.m in Sources */,
+				091B93AB1FFE1381004F1274 /* DYDeviceInfo.m in Sources */,
 				09145EE11FE3705C00DEE686 /* YZHttpSessionManager.m in Sources */,
 				09145F041FE4EFDE00DEE686 /* BLSettingCell.m in Sources */,
 				09238B4A1FDA7E2A00150FB2 /* HDUserLockService.m in Sources */,
