@@ -50,4 +50,5 @@ SingletonH
 - (void)sendBleDataWithCmdType:(BleCmdType)type Peripheral:(CBPeripheral*)peripheral Characteristic:(CBCharacteristic*)character;
 
 
+
 @end

@@ -69,6 +69,7 @@
 		091B939C1FFB7F52004F1274 /* YZAuthID.m in Sources */ = {isa = PBXBuildFile; fileRef = 091B939B1FFB7F4A004F1274 /* YZAuthID.m */; };
 		091B93A71FFCB573004F1274 /* NSObject+LQCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 091B93A61FFCB573004F1274 /* NSObject+LQCoding.m */; };
 		091B93AB1FFE1381004F1274 /* DYDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 091B93AA1FFE1371004F1274 /* DYDeviceInfo.m */; };
+		091B93EF2000A8FE004F1274 /* NSDate+Expend.m in Sources */ = {isa = PBXBuildFile; fileRef = 091B93ED2000A8FE004F1274 /* NSDate+Expend.m */; };
 		09238B411FDA38BB00150FB2 /* HDZKLockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09238B401FDA38BB00150FB2 /* HDZKLockModel.m */; };
 		09238B441FDA42E300150FB2 /* HDZKAuthorUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09238B431FDA42E300150FB2 /* HDZKAuthorUserModel.m */; };
 		09238B471FDA6FB100150FB2 /* HDZKUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 09238B461FDA6FB100150FB2 /* HDZKUserData.m */; };
@@ -354,6 +355,8 @@
 		091B93A61FFCB573004F1274 /* NSObject+LQCoding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LQCoding.m"; sourceTree = "<group>"; };
 		091B93A91FFE1371004F1274 /* DYDeviceInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYDeviceInfo.h; sourceTree = "<group>"; };
 		091B93AA1FFE1371004F1274 /* DYDeviceInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYDeviceInfo.m; sourceTree = "<group>"; };
+		091B93ED2000A8FE004F1274 /* NSDate+Expend.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Expend.m"; sourceTree = "<group>"; };
+		091B93EE2000A8FE004F1274 /* NSDate+Expend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Expend.h"; sourceTree = "<group>"; };
 		09238B3F1FDA38BB00150FB2 /* HDZKLockModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDZKLockModel.h; sourceTree = "<group>"; };
 		09238B401FDA38BB00150FB2 /* HDZKLockModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDZKLockModel.m; sourceTree = "<group>"; };
 		09238B421FDA42E300150FB2 /* HDZKAuthorUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDZKAuthorUserModel.h; sourceTree = "<group>"; };
@@ -1304,6 +1307,8 @@
 		094FF25A1FD945EE00D4FB2D /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				091B93EE2000A8FE004F1274 /* NSDate+Expend.h */,
+				091B93ED2000A8FE004F1274 /* NSDate+Expend.m */,
 				091B93891FF0D914004F1274 /* UIButton+Layout.h */,
 				091B938A1FF0D914004F1274 /* UIButton+Layout.m */,
 				090B9F171FE294EA009DECC7 /* NSDictionary+String.h */,
@@ -1803,6 +1808,7 @@
 				091B938B1FF0D914004F1274 /* UIButton+Layout.m in Sources */,
 				09238B4D1FDA810600150FB2 /* HDAuthorKeyService.m in Sources */,
 				091B93AB1FFE1381004F1274 /* DYDeviceInfo.m in Sources */,
+				091B93EF2000A8FE004F1274 /* NSDate+Expend.m in Sources */,
 				09145EE11FE3705C00DEE686 /* YZHttpSessionManager.m in Sources */,
 				09145F041FE4EFDE00DEE686 /* BLSettingCell.m in Sources */,
 				09238B4A1FDA7E2A00150FB2 /* HDUserLockService.m in Sources */,
