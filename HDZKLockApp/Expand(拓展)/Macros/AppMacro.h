@@ -69,7 +69,7 @@
 #define IS_IPHONE_P [[UIScreen mainScreen] bounds].size.width == 414.0f && [[UIScreen mainScreen] bounds].size.height == 736.0f
 
 //UUID
-#define UUID [[[UIDevice currentDevice] identifierForVendor] UUIDString]
+//#define UUID [[[UIDevice currentDevice] identifierForVendor] UUIDString]
 
 
 //自定义Log

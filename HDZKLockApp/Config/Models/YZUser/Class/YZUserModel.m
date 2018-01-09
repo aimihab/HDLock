@@ -17,7 +17,7 @@
 
 #import <QiniuSDK.h>
 
-static NSString *QINIUURL = @"http://oqjjvo9tz.bkt.clouddn.com/";
+static NSString *QINIUURL = @"http://ounwevhul.bkt.clouddn.com/";
 @implementation YZUserModel
 {
     NSString *scode_;  //通信秘钥
@@ -67,6 +67,7 @@ SingletonM
     isHttps_ = isHttps;
     YZ_UDSetObj(domain_,YZDOMAIN);
     NSString *user = YZ_UDGetObj(USER);
+    
     if (user) {
         YZUserModel *model = [YZUserModel yy_modelWithJSON:user];
 
@@ -77,6 +78,7 @@ SingletonM
         self.u_nick_name = model.u_nick_name?model.u_nick_name:@"";
         self.u_id = model.u_id?model.u_id:@"";
         self.unlock_password = model.unlock_password?model.unlock_password:@"";
+        
         /*
         self.u_sex = model.u_sex;
         self.u_birth = model.u_birth?model.u_birth:@"";
@@ -88,6 +90,9 @@ SingletonM
         self.bind_wb = model.bind_wb?model.bind_wb:@"";
         self.signature = model.signature?model.signature:@"";
         */
+    }else{
+        
+         [[NSNotificationCenter defaultCenter] postNotificationName:LoginStateChangeNotification object:@(0)];
     }
 }
 
@@ -672,10 +677,14 @@ SingletonM
 -(void)updateFileData:(NSData *)fileData key:(NSString *)key suffix:(NSString *)suffix success:(void (^)(NSString *))success failure:(YZUserFailure)failure
 {
     
-    
-    [self gainUpdateFileWithSuffix:suffix success:^(NSString *token) {
-            [self p_updateFileData:fileData key:key token:token success:success failure:failure];
-        } failure:failure];
+    [self gainUpdateFileWithSuffix:suffix success:^(id obj) {
+        
+        NSString *token = obj[TOKEN];
+        NSString *key1 = obj[KEY];
+        
+        [self p_updateFileData:fileData key:key1 token:token success:success failure:failure];
+        
+    } failure:failure];
 }
 
 
@@ -702,20 +711,32 @@ SingletonM
 }
 
 #pragma mark ------获取上传文件token
--(void)gainUpdateFileWithSuffix:(NSString *)suffix success:(void (^)(NSString *))success  failure:(YZUserFailure)failure
+-(void)gainUpdateFileWithSuffix:(NSString *)suffix success:(void(^)(id obj))success failure:(YZUserFailure)failure
 {
     [self checkScodeWithFailure:failure];
-    NSString *url = [self gainUrlWithModule:UPLODMODULE method:@"get-sdk-token"];
+    NSString *url = [self gainUrlWithModule:UPLODMODULE method:@"get-upload-token"];
     NSDictionary *param = @{SCODE:scode_,OPENID:self.openid,SUFFIX:suffix};
     [YZNetManager networkPostRequestWithParameter:param url:url success:^(id responseObject) {
+        
+        if ([responseObject[@"code"] integerValue] == 200) {
+            DLog(@"获取上传Token成功..");
+        }else{
+            DLog(@"获取上传Token失败..");
+            return;
+        }
+        
         [self p_analysisResponseObject:responseObject success:^(id responseObject) {
-            NSArray *keys = [responseObject allKeys];
+            /*
+            NSArray *keys = [responseObject[@"data"] allKeys];
             if ([keys containsObject:TOKEN]) {
                 if (success) {
                     NSString *token = responseObject[TOKEN];
                     success(token);
                 }
             }
+            */
+            success(responseObject[@"data"]);
+            
         } failure:failure];
     } failure:^(YZNetError *error) {
         [self p_analysisError:error failure:failure];
@@ -733,6 +754,7 @@ SingletonM
         builder.zone = [QNFixedZone zone2];
     }];
     QNUploadManager *upManager = [[QNUploadManager alloc] initWithConfiguration:config];
+    
     [upManager putData:fileData key:key token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
         if (info.ok && success) {
             NSString *url =[NSString stringWithFormat:@"%@%@",QINIUURL,resp[@"key"]];
@@ -745,7 +767,6 @@ SingletonM
 #pragma mark ----解析错误信息
 -(void)p_analysisError:(YZNetError *)error failure:(YZUserFailure)failure
 {
-    
     
     if (failure) {
          YZUserError *userError = [[YZUserError alloc] initWithErrorCode:error.code withdescription:error.localizedDescription];

@@ -36,8 +36,6 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    [YZUserModelInstance setDomain:HDDOMAIN versionType:YZUserVersionTypeDevelop isHttps:ISUSERHTTPS];//配置域名接口环境
-    
     //注册登录状态监听布局UI
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loginStateChange:)
@@ -49,6 +47,8 @@
     }else{
         [[NSNotificationCenter defaultCenter] postNotificationName:LoginStateChangeNotification object:@(0)];
     }
+    
+     [YZUserModelInstance setDomain:HDDOMAIN versionType:YZUserVersionTypeDevelop isHttps:ISUSERHTTPS];//配置域名接口环境
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -132,7 +132,17 @@
              [self.window setRootViewController:self.drawerController];
         }
             break;
-        
+        case 3:
+        {
+            if (self.drawerController) {
+                [self.drawerController.navigationController popToRootViewControllerAnimated:NO];
+            }
+            self.drawerController = nil;
+            HDZKLoginViewController *loginController = [[HDZKLoginViewController alloc] init];
+            self.window.rootViewController = [[HDZKBaseNavController alloc] initWithRootViewController:loginController];
+            
+        }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+            break;
         default:
             break;
     }

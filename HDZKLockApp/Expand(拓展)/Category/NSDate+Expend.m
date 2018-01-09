@@ -8,6 +8,8 @@
 
 #import "NSDate+Expend.h"
 
+#define DATE_CURRENT [NSCalendar calendarWithIdentifier: NSCalendarIdentifierGregorian]
+
 @implementation NSDate (Expend)
 
 +(int)getDaysFrom1970:(NSString*)dateString
@@ -61,7 +63,7 @@
 +(int)getCurrentYear
 {
     NSDate *now = [NSDate date];
-    NSCalendar *calendar = DATE_CURRENT;
+    NSCalendar *calendar = [NSCalendar calendarWithIdentifier: NSCalendarIdentifierGregorian];
     NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
     NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:now];
     int year = (int)[dateComponent year];
@@ -416,48 +418,44 @@
     switch ([NSDate getWeekdayFromDate:date]) {
         case 2:
         {
-            weekString = __LocalizedStringFromKey(@"周一 ");
+            weekString = NSLocalizedString(@"周一 ", nil);
         }
             break;
         case 3:
         {
-            weekString = __LocalizedStringFromKey(@"周二 ");
+            weekString = NSLocalizedString(@"周二 ", nil);
         }
             break;
         case 4:
         {
-            weekString = __LocalizedStringFromKey(@"周三 ");
+            weekString = NSLocalizedString(@"周三 ", nil);
         }
             break;
         case 5:
         {
-            weekString = __LocalizedStringFromKey(@"周四 ");
+            weekString = NSLocalizedString(@"周四 ", nil);
         }
             break;
         case 6:
         {
-            weekString = __LocalizedStringFromKey(@"周五 ");
+            weekString = NSLocalizedString(@"周五 ", nil);
         }
             break;
         case 7:
         {
-            weekString = __LocalizedStringFromKey(@"周六 ");
+            weekString = NSLocalizedString(@"周六 ", nil);
         }
             break;
         case 1:
         {
-            weekString = __LocalizedStringFromKey(@"周日 ");
+            weekString = NSLocalizedString(@"周日 ", nil);
         }
             break;
         default:
             break;
     }
-    if ([[MNLanguageService shareInstance] getCurrentLanguage] == CurrentLanguageTypeChineseSimple ||
-        [[MNLanguageService shareInstance] getCurrentLanguage] == CurrentLanguageTypeChineseTraditional) {
-        return [NSString stringWithFormat:@"%@ %@",weekString,[self getStringWithFormat:@"MM-dd" andDate:date]];
-    }else{
-        return [NSString stringWithFormat:@"%@ %@",weekString,[self getStringWithFormat:@"dd/MM" andDate:date]];
-    }
+   
+    return [NSString stringWithFormat:@"%@ %@",weekString,[self getStringWithFormat:@"MM-dd" andDate:date]];
 
 }
 
@@ -470,48 +468,45 @@
     switch ([NSDate getWeekdayFromDate:date]) {
         case 2:
         {
-            weekString = __LocalizedStringFromKey(@"周一 ");
+            weekString = NSLocalizedString(@"周一 ", nil);
         }
             break;
         case 3:
         {
-            weekString = __LocalizedStringFromKey(@"周二 ");
+            weekString = NSLocalizedString(@"周二 ", nil);
         }
             break;
         case 4:
         {
-            weekString = __LocalizedStringFromKey(@"周三 ");
+            weekString = NSLocalizedString(@"周三 ", nil);
         }
             break;
         case 5:
         {
-            weekString = __LocalizedStringFromKey(@"周四 ");
+            weekString = NSLocalizedString(@"周四 ", nil);
         }
             break;
         case 6:
         {
-            weekString = __LocalizedStringFromKey(@"周五 ");
+            weekString = NSLocalizedString(@"周五 ", nil);
         }
             break;
         case 7:
         {
-            weekString = __LocalizedStringFromKey(@"周六 ");
+            weekString = NSLocalizedString(@"周六 ", nil);
         }
             break;
         case 1:
         {
-            weekString = __LocalizedStringFromKey(@"周日 ");
+            weekString = NSLocalizedString(@"周日 ", nil);
         }
             break;
         default:
             break;
     }
-    if ([[MNLanguageService shareInstance] getCurrentLanguage] == CurrentLanguageTypeChineseSimple ||
-        [[MNLanguageService shareInstance] getCurrentLanguage] == CurrentLanguageTypeChineseTraditional) {
-        return [NSString stringWithFormat:@"%@ %@",[self getStringWithFormat:@"yyyy/MM/dd" andDate:date],weekString];
-    }else{
-        return [NSString stringWithFormat:@"%@ %@",[self getStringWithFormat:@"dd/MM/yyyy" andDate:date],weekString];
-    }
+  
+    return [NSString stringWithFormat:@"%@ %@",[self getStringWithFormat:@"yyyy/MM/dd" andDate:date],weekString];
+
 }
 
 + (NSArray *)getWeekRangeArrWithDate:(NSDate *)date

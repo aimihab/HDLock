@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <BabyBluetooth.h>
 
+
+#define HDZKBleServiceInstance [HDZKBleService sharedInstance]
+
 typedef NS_ENUM (NSInteger,BleCmdType){
     
     BleCmdTypeCetDeviceID = 0,
@@ -44,7 +47,13 @@ typedef NS_ENUM (NSInteger,BleCmdType){
 
 SingletonH
 
-@property (nonatomic , strong) CBPeripheral *currentPeripheral;
+@property (nonatomic ,strong) CBPeripheral *currentLockPeripheral;
+@property (nonatomic,strong) CBCharacteristic *lockReadChar; //读通道
+@property (nonatomic,strong) CBCharacteristic *lockWriteChar;//写通道
+
+
+@property (nonatomic , strong) CBPeripheral *currentKeyPeripheral;
+
 
 
 - (void)sendBleDataWithCmdType:(BleCmdType)type Peripheral:(CBPeripheral*)peripheral Characteristic:(CBCharacteristic*)character;

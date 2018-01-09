@@ -44,7 +44,7 @@
     
 }
 
-+ (void)authoriseUserWithUid:(NSInteger)uid userName:(NSString *)name authorType:(NSInteger)type DevBindID:(NSString *)bindId EndTime:(NSString *)endTime IsSync:(NSInteger)is_sync success:(CoreSuccess)success failure:(CoreFailure)failure{
++ (void)authoriseUserWithUid:(NSInteger)uid userName:(NSString *)name authorType:(NSInteger)type devBindID:(NSString *)bindId endTime:(NSString *)endTime isSync:(NSInteger)is_sync success:(CoreSuccess)success failure:(CoreFailure)failure{
     
     NSDictionary *param = @{OPENID:YZUserModelInstance.openid,SCODE:YZ_UDGetObj(SCODE),AUTHORUSERID:@(uid),AUTHORUSERNAME:name,AUTHORTYPE:@(type),DEVBINDID:bindId,ENDTIME:endTime,ISSYNC:@(is_sync)};
     

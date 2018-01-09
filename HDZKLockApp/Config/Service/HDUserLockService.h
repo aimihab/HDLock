@@ -41,7 +41,7 @@
  @param success 成功回调
  @param failure 失败回调
  */
-+ (void)authoriseUserWithUid:(NSInteger)uid userName:(NSString *)name authorType:(NSInteger)type DevBindID:(NSString *)bindId endTime:(NSString *)endTime isSync:(NSInteger)is_sync success:(CoreSuccess)success failure:(CoreFailure)failure;
++ (void)authoriseUserWithUid:(NSInteger)uid userName:(NSString *)name authorType:(NSInteger)type devBindID:(NSString *)bindId endTime:(NSString *)endTime isSync:(NSInteger)is_sync success:(CoreSuccess)success failure:(CoreFailure)failure;
 
 /**
  获取用户绑定的锁列表

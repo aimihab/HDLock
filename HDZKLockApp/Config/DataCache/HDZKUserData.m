@@ -65,6 +65,22 @@ SingletonM
 }
 
 
+- (NSArray *)lockPeripheralNames{
+    
+    NSMutableArray *names = [NSMutableArray array];
+    
+    [self.bandLockList enumerateObjectsUsingBlock:^(HDZKLockModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [names addObject:obj.dev_name];
+    }];
+    [self.authoredLockList enumerateObjectsUsingBlock:^(HDZKLockModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [names addObject:obj.dev_name];
+    }];
+    
+    return [names copy];
+}
+
+
+
 #pragma mark  - Public
 
 - (void)updateBandLockListCacheWith:(NSArray*)list{

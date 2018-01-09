@@ -10,22 +10,28 @@
 #import "YZUserModel.h"
 #import "DYDeviceInfo.h"
 #import "TTC_Ble_Encryption_lib.h"
-#include "FingerLockApi.h"
 #import "NSDate+Expend.h"
 
+#include "FingerLockApi.h"
 #define BLE_SEND_MAX_LEN 17
 
 @implementation HDZKBleService
 
-static NSString* ClientConfigCharacteristic = @"00002902-0000-1000-8000-00805f9b34fb";
-static NSString* BleShieldService = @"00001000-0000-1000-8000-00805f9b34fb";
-static NSString* BraceletWriteCharacteristic = @"00001001-0000-1000-8000-00805f9b34fb";//写
-static NSString* BraceletReadCharacteristic = @"00001002-0000-1000-8000-00805f9b34fb";//读
-static NSString* BraceletREGWriteNameCharacteristic = @"00001003-0000-1000-8000-00805f9b34fb";
-static NSString* BraceletREGAddressCharacteristic = @"00001005-0000-1000-8000-00805f9b34fb";
-
-
 SingletonM
+
+-(instancetype)init
+{
+    if (self = [super init]) {
+        
+        self.lockWriteChar = nil;
+        self.lockReadChar = nil;
+       
+    }
+    return self;
+}
+
+
+
 #pragma mark - public
 
 - (void)sendBleDataWithCmdType:(BleCmdType)type Peripheral:(CBPeripheral*)peripheral Characteristic:(CBCharacteristic*)character {
@@ -44,7 +50,7 @@ SingletonM
               Characteristic:(CBCharacteristic*)character
 {
     for (int i = 0; i < [msgData length]; i += BLE_SEND_MAX_LEN) {
-        // 预加 最大包长度，如果依然小于总数据长度，可以取最大包数据大小
+        // 预加最大包长度，如果依然小于总数据长度，可以取最大包数据大小
         if ((i + BLE_SEND_MAX_LEN) < [msgData length]) {
             NSString *rangeStr = [NSString stringWithFormat:@"%i,%i", i, BLE_SEND_MAX_LEN];
 
@@ -72,8 +78,9 @@ SingletonM
     
     FingerLockApi *cmmApi = new FingerLockApi();
     
-    const char* ch_uid = [YZUserModelInstance.u_id UTF8String];
-    int chInt_uid = atoi(ch_uid);
+ //   const char* ch_uid = [YZUserModelInstance.u_id UTF8String];
+  //  int chInt_uid = atoi(ch_uid);
+    int chInt_uid = [YZUserModelInstance.u_id intValue];
     
     const char *ch_imei = [[DYDeviceInfo dy_getDeviceUUID] UTF8String];
     
@@ -252,6 +259,8 @@ SingletonM
     }
     
     delete cmmApi;
+    DLog("命令字符串为..%@",ocString);
+    
     NSData *msgData = [ocString dataUsingEncoding:NSUTF8StringEncoding];
     return msgData;
 }

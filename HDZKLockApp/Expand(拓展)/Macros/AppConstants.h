@@ -48,4 +48,16 @@ static NSString * const AUTHORIDS = @"ids";
 static NSString * const TRANSFERID = @"target_id";
 static NSString * const TARGETUSERID = @"target_id";
 
+#pragma mark --------蓝牙服务特征字段常量定义-------------
+
+static NSString* ClientConfigCharacteristic = @"00002902-0000-1000-8000-00805f9b34fb";
+static NSString* BleShieldService = @"00001000-0000-1000-8000-00805f9b34fb";
+static NSString* BraceletWriteCharacteristic = @"00001001-0000-1000-8000-00805f9b34fb";//写
+static NSString* BraceletReadCharacteristic = @"00001002-0000-1000-8000-00805f9b34fb";//读
+static NSString* BraceletREGWriteNameCharacteristic = @"00001003-0000-1000-8000-00805f9b34fb";
+static NSString* BraceletREGAddressCharacteristic = @"00001005-0000-1000-8000-00805f9b34fb";
+
+
+
+
 #endif /* AppConstants_h */

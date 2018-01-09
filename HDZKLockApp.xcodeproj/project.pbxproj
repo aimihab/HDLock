@@ -65,11 +65,11 @@
 		091B938B1FF0D914004F1274 /* UIButton+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 091B938A1FF0D914004F1274 /* UIButton+Layout.m */; };
 		091B938E1FF3AFE6004F1274 /* HDZKLockData.m in Sources */ = {isa = PBXBuildFile; fileRef = 091B938D1FF3AFE6004F1274 /* HDZKLockData.m */; };
 		091B93941FF3C75F004F1274 /* HDZKBeAuthorLockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 091B93931FF3C75F004F1274 /* HDZKBeAuthorLockModel.m */; };
-		091B93981FFB7D0C004F1274 /* libTTC_Ble_Encryption_lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 092FD0451FEBDB6D00C78C40 /* libTTC_Ble_Encryption_lib.a */; };
 		091B939C1FFB7F52004F1274 /* YZAuthID.m in Sources */ = {isa = PBXBuildFile; fileRef = 091B939B1FFB7F4A004F1274 /* YZAuthID.m */; };
 		091B93A71FFCB573004F1274 /* NSObject+LQCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 091B93A61FFCB573004F1274 /* NSObject+LQCoding.m */; };
 		091B93AB1FFE1381004F1274 /* DYDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 091B93AA1FFE1371004F1274 /* DYDeviceInfo.m */; };
 		091B93EF2000A8FE004F1274 /* NSDate+Expend.m in Sources */ = {isa = PBXBuildFile; fileRef = 091B93ED2000A8FE004F1274 /* NSDate+Expend.m */; };
+		091B93F1200362B8004F1274 /* libTTC_Ble_Encryption_lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 092FD0451FEBDB6D00C78C40 /* libTTC_Ble_Encryption_lib.a */; };
 		09238B411FDA38BB00150FB2 /* HDZKLockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09238B401FDA38BB00150FB2 /* HDZKLockModel.m */; };
 		09238B441FDA42E300150FB2 /* HDZKAuthorUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09238B431FDA42E300150FB2 /* HDZKAuthorUserModel.m */; };
 		09238B471FDA6FB100150FB2 /* HDZKUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 09238B461FDA6FB100150FB2 /* HDZKUserData.m */; };
@@ -119,7 +119,7 @@
 		092FD0411FEBB55000C78C40 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 092FCFE41FEBB54F00C78C40 /* LICENSE */; };
 		092FD0421FEBB55000C78C40 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 092FD03F1FEBB55000C78C40 /* libcrypto.a */; };
 		092FD0431FEBB55000C78C40 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 092FD0401FEBB55000C78C40 /* libssl.a */; };
-		092FD04A1FECB06800C78C40 /* HDZKBleService.mm in Sources */ = {isa = PBXBuildFile; fileRef = 092FD0491FECB06800C78C40 /* HDZKBleService.mm */; };
+		092FD04A1FECB06800C78C40 /* HDZKBleService.m in Sources */ = {isa = PBXBuildFile; fileRef = 092FD0491FECB06800C78C40 /* HDZKBleService.m */; };
 		092FD0521FECBB3200C78C40 /* HDZKLockInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 092FD0501FECBB3200C78C40 /* HDZKLockInfoViewCell.m */; };
 		092FD0531FECBB3200C78C40 /* HDZKLockInfoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 092FD0511FECBB3200C78C40 /* HDZKLockInfoViewCell.xib */; };
 		093D9A1B1FE771FF0089D0E4 /* BLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09145F181FE5343200DEE686 /* BLPasswordView.m */; };
@@ -509,8 +509,8 @@
 		092FD0401FEBB55000C78C40 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		092FD0451FEBDB6D00C78C40 /* libTTC_Ble_Encryption_lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTTC_Ble_Encryption_lib.a; sourceTree = "<group>"; };
 		092FD0461FEBDB6D00C78C40 /* TTC_Ble_Encryption_lib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTC_Ble_Encryption_lib.h; sourceTree = "<group>"; };
-		092FD0481FECB06800C78C40 /* HDZKBleService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDZKBleService.h; sourceTree = "<group>"; };
-		092FD0491FECB06800C78C40 /* HDZKBleService.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; path = HDZKBleService.mm; sourceTree = "<group>"; };
+		092FD0481FECB06800C78C40 /* HDZKBleService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDZKBleService.h; sourceTree = "<group>"; };
+		092FD0491FECB06800C78C40 /* HDZKBleService.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = HDZKBleService.m; sourceTree = "<group>"; };
 		092FD04F1FECBB3200C78C40 /* HDZKLockInfoViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDZKLockInfoViewCell.h; sourceTree = "<group>"; };
 		092FD0501FECBB3200C78C40 /* HDZKLockInfoViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDZKLockInfoViewCell.m; sourceTree = "<group>"; };
 		092FD0511FECBB3200C78C40 /* HDZKLockInfoViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HDZKLockInfoViewCell.xib; sourceTree = "<group>"; };
@@ -631,11 +631,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				091B93F1200362B8004F1274 /* libTTC_Ble_Encryption_lib.a in Frameworks */,
 				092FD0431FEBB55000C78C40 /* libssl.a in Frameworks */,
 				092F7EBB1FE7B1E900DB01C5 /* AudioToolbox.framework in Frameworks */,
 				32552D26771FAE0200ADD586 /* libPods-HDZKLockApp.a in Frameworks */,
 				092FD0421FEBB55000C78C40 /* libcrypto.a in Frameworks */,
-				091B93981FFB7D0C004F1274 /* libTTC_Ble_Encryption_lib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1353,7 +1353,7 @@
 				093D9A291FE79D560089D0E4 /* HDZKNoticeService.h */,
 				093D9A2A1FE79D560089D0E4 /* HDZKNoticeService.m */,
 				092FD0481FECB06800C78C40 /* HDZKBleService.h */,
-				092FD0491FECB06800C78C40 /* HDZKBleService.mm */,
+				092FD0491FECB06800C78C40 /* HDZKBleService.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1868,7 +1868,7 @@
 				09238B411FDA38BB00150FB2 /* HDZKLockModel.m in Sources */,
 				09145F0D1FE5050600DEE686 /* UIAlertView+Extension.m in Sources */,
 				093D9A281FE7754C0089D0E4 /* HDZKMyKeychainViewController.m in Sources */,
-				092FD04A1FECB06800C78C40 /* HDZKBleService.mm in Sources */,
+				092FD04A1FECB06800C78C40 /* HDZKBleService.m in Sources */,
 				091B93871FF0A83E004F1274 /* HDZKLockStateInfoCell.m in Sources */,
 				091B93831FEE6C12004F1274 /* HDZKAuthorUserDetailViewController.m in Sources */,
 				092F7F011FEA3BEC00DB01C5 /* UINavigationController+LQProgress.m in Sources */,
@@ -2053,7 +2053,7 @@
 					"\"$(SRCROOT)/HDZKLockApp/Expand(拓展)/Tools/BLETools/include\"",
 				);
 				INFOPLIST_FILE = HDZKLockApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2101,7 +2101,7 @@
 					"\"$(SRCROOT)/HDZKLockApp/Expand(拓展)/Tools/BLETools/include\"",
 				);
 				INFOPLIST_FILE = HDZKLockApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

@@ -76,7 +76,8 @@
                 [strongSelf.userModel updateHeadData:data suffix:@"png" success:^(NSString *fileUrl) {
                     [MBProgressHUD hideHUD];
                     [[SDImageCache sharedImageCache] removeImageForKey:strongSelf.userModel.u_head_url withCompletion:nil];
-                    strongSelf.userModel.u_head_url = [NSString stringWithFormat:@"%@?%@",fileUrl,@([[NSDate date] timeIntervalSince1970])];
+                   // strongSelf.userModel.u_head_url = [NSString stringWithFormat:@"%@?%@",fileUrl,@([[NSDate date] timeIntervalSince1970])];
+                    strongSelf.userModel.u_head_url = fileUrl;
                     [strongSelf.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
                 } failure:^(YZUserError *error) {
                     [MBProgressHUD hideHUD];

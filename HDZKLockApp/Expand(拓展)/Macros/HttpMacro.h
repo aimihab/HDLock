@@ -18,14 +18,14 @@
 #define HDDOMAIN @"test.api.hdzkong.com"
 #define ISUSERHTTPS NO
 #define APIVERSION @"v1"
-static NSString *QINIUHEADURL = @"http://img.szbailiao.com/";
+static NSString *QINIUHEADURL = @"http://ounwevhul.bkt.clouddn.com/";
 
 #else
 
 #define HDDOMAIN @"test.api.hdzkong.com"
 #define APIVERSION @"v1"
 #define ISUSERHTTPS NO
-static NSString *QINIUHEADURL = @"http://img.szbailiao.com/";
+static NSString *QINIUHEADURL = @"http://ounwevhul.bkt.clouddn.com/";
 
 #endif
 

@@ -22,12 +22,14 @@
 
 #import "YZAuthID.h"
 #import "HDZKUserData.h"
+#import "HDZKBleService.h"
 
+#import <CoreBluetooth/CoreBluetooth.h>
 
 @interface HDZKMainViewController (){
     
     BabyBluetooth *baby;
-    
+    int cuurentPeripheralRssi;
 }
 
 @end
@@ -35,6 +37,7 @@
 @implementation HDZKMainViewController
 
 #pragma mark - getters and setters
+
 
 
 
@@ -46,6 +49,9 @@
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -68,8 +74,11 @@
     
    
     baby = [BabyBluetooth shareBabyBluetooth]; //初始化BabyBluetooth 蓝牙库
+    cuurentPeripheralRssi = 0;
     [self babyBleDelegate];//设置蓝牙委托
-
+ //   baby.scanForPeripherals().begin().stop(10);//扫描10s停止
+   baby.scanForPeripherals().connectToPeripherals().discoverServices().discoverCharacteristics().readValueForCharacteristic().begin(); //扫描、连接
+    
 }
 
 
@@ -78,6 +87,7 @@
     
     [self configLockStateInfoView];//配置锁相关状态数据显示
     [self configInfoView];
+    
 }
 
 
@@ -166,29 +176,153 @@
 }
 */
 
+
 #pragma mark - BabyBluetoothDelegate
 
 - (void)babyBleDelegate{
     
-    //设置扫描到设备的委托
-    [baby setBlockOnDiscoverToPeripherals:^(CBCentralManager *central, CBPeripheral *peripheral, NSDictionary *advertisementData, NSNumber *RSSI) {
-        NSLog(@"搜索到了设备:%@",peripheral.name);
+    BabyRhythm *rhythm = [[BabyRhythm alloc]init];
+    
+    [baby setBlockOnCentralManagerDidUpdateState:^(CBCentralManager *central) {
+        if (central.state == CBCentralManagerStatePoweredOn) {
+            DLog(@"设备打开成功..开始扫描设备");
+        }
     }];
     
-    //设置查找设备的过滤器
+    //设置发现characteristics的descriptors的委托
+    [baby setBlockOnDiscoverDescriptorsForCharacteristic:^(CBPeripheral *peripheral, CBCharacteristic *characteristic, NSError *error) {
+        NSLog(@"===characteristic name:%@",characteristic.service.UUID);
+        for (CBDescriptor *d in characteristic.descriptors) {
+            NSLog(@"CBDescriptor name is :%@",d.UUID);
+        }
+    }];
+    //设置扫描设备的过滤器
     [baby setFilterOnDiscoverPeripherals:^BOOL(NSString *peripheralName, NSDictionary *advertisementData, NSNumber *RSSI) {
-        //最常用的场景是查找某一个前缀开头的设备
-        //if ([peripheralName hasPrefix:@"Pxxxx"] ) {
-        //    return YES;
-        //}
-        //return NO;
-        //设置查找规则是名称大于1 ， the search rule is peripheral.name length > 1
-        if (peripheralName.length >1) {
+        //搜索查找“HDAI”前缀开头的慧点锁设备
+        if ([peripheralName hasPrefix:@"HDAI"] ) {
             return YES;
         }
         return NO;
     }];
     
+    //设置扫描到设备的委托
+    [baby setBlockOnDiscoverToPeripherals:^(CBCentralManager *central, CBPeripheral *peripheral, NSDictionary *advertisementData, NSNumber *RSSI) {
+        DLog(@"搜索到了设备:%@",peripheral.name);
+        if (cuurentPeripheralRssi > [RSSI intValue]) {
+            cuurentPeripheralRssi = [RSSI intValue];
+            
+            HDZKBleServiceInstance.currentLockPeripheral = peripheral;
+            /*
+            if ([[HDZKUserDataInstance lockPeripheralNames] containsObject:peripheral.name]) {
+                HDZKBleServiceInstance.currentLockPeripheral = peripheral;
+            }
+             */
+        }else{
+            
+            
+            
+        }
+        
+        
+    }];
+    
+    /*
+     *搜索设备后连接设备：1:先设置连接的设备的filter 2进行连接
+     */
+    //1：设置连接的设备的过滤器
+    __block BOOL isFirst = YES;
+    [baby setFilterOnConnectToPeripherals:^BOOL(NSString *peripheralName, NSDictionary *advertisementData, NSNumber *RSSI) {
+        //这里的规则是：连接第一个AAA打头的设备
+        if(isFirst && [peripheralName hasPrefix:@"HDAI"]){
+            isFirst = NO;
+            return YES;
+        }
+        return NO;
+    }];
+    
+    
+    //设置设备连接成功的委托,同一个baby对象，使用不同的channel切换委托回调
+    [baby setBlockOnConnected:^(CBCentralManager *central, CBPeripheral *peripheral) {
+        DLog(@"设备：%@--连接成功",peripheral.name);
+        [MBProgressHUD showSuccessMessage:NSLocalizedString(@"%@连接成功",peripheral.name)];
+        HDZKBleServiceInstance.currentLockPeripheral = peripheral;
+        
+    }];
+    
+    //设置设备连接失败的委托
+    [baby setBlockOnFailToConnect:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
+        DLog(@"设备：%@--连接失败",peripheral.name);
+    }];
+    
+    //设置设备断开连接的委托
+    [baby setBlockOnDisconnect:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
+        DLog(@"设备：%@--断开连接",peripheral.name);
+    }];
+    
+    //设置发现设备的Services的委托
+    [baby setBlockOnDiscoverServices:^(CBPeripheral *peripheral, NSError *error) {
+        for (CBService *s in peripheral.services) {
+            //每个service
+        }
+        
+    }];
+    
+    //设置发现设service的Characteristics的委托
+    [baby setBlockOnDiscoverCharacteristics:^(CBPeripheral *peripheral, CBService *service, NSError *error) {
+        NSLog(@"===service name:%@",service.UUID);
+        for (CBCharacteristic *c in service.characteristics) {
+            NSLog(@"charateristic name is :%@",c.UUID);
+        }
+        
+    }];
+    
+    YZWeakSelf(weakSelf, self);
+    //设置读取characteristics的委托
+    [baby setBlockOnReadValueForCharacteristic:^(CBPeripheral *peripheral, CBCharacteristic *characteristic, NSError *error) {
+        
+        DLog(@"characteristic name:%@ value is:%@",characteristic.UUID,characteristic.value);
+        
+        if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:BraceletReadCharacteristic]]) {
+            //   [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+            [weakSelf notifyPeripheral:peripheral Characteristic:characteristic];//监听读通道
+            DLog(@"读通道");
+            HDZKBleServiceInstance.lockReadChar = characteristic;
+        }
+        if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:BraceletWriteCharacteristic]]) {
+            DLog(@"写通道");
+            HDZKBleServiceInstance.lockWriteChar = characteristic;
+        }
+        
+        if (HDZKBleServiceInstance.lockWriteChar != nil && HDZKBleServiceInstance.currentLockPeripheral != nil) {
+            
+            [weakSelf sendBleCmdEvent];
+        }
+
+    }];
+
+    //写Characteristic成功后的block
+    [baby setBlockOnDidWriteValueForCharacteristic:^(CBCharacteristic *characteristic, NSError *error) {
+        DLog(@"写成功...");
+    }];
+    
+}
+
+
+-(void)sendBleCmdEvent{
+    
+    [HDZKBleServiceInstance sendBleDataWithCmdType:BleCmdTypeSendRandNumberCmd Peripheral:HDZKBleServiceInstance.currentLockPeripheral Characteristic:HDZKBleServiceInstance.lockWriteChar];
+    [HDZKBleServiceInstance sendBleDataWithCmdType:BleCmdTypeSendCheckCode Peripheral:HDZKBleServiceInstance.currentLockPeripheral Characteristic:HDZKBleServiceInstance.lockWriteChar];
+    
+}
+
+
+- (void)notifyPeripheral:(CBPeripheral *)peripheral Characteristic:(CBCharacteristic *)characteristic{
+    
+    [baby notify:peripheral characteristic:characteristic  block:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
+        //接收到值会进入这个方法
+        DLog(@"-----------new value %@",characteristics.value);
+        
+    }];
     
 }
 
@@ -221,8 +355,8 @@
     }
     
     if (HDZKUserDataInstance.currentLockModel) {//当前绑定锁设备有数据
-        
         //蓝牙直接连接..
+        
         
         
     }
@@ -239,6 +373,7 @@
         } else if (state == YZAuthIDStateSuccess) { //TouchID/FaceID验证成功
             NSLog(@"认证成功！");
         }
+        
         
     }];
     

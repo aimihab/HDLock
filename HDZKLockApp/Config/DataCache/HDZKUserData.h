@@ -64,6 +64,12 @@ SingletonH
  */
 - (void)updateLogListCacheWith:(HDZKLogModel *)model;
 
+/**
+ 获取所有能支持开锁的锁设备名称
+
+ @return 名称数组
+ */
+- (NSArray *)lockPeripheralNames;
 
 
 /**

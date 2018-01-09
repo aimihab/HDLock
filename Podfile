@@ -19,7 +19,6 @@ pod 'Popover.OC'
 pod 'PureCamera'
 pod 'BabyBluetooth','~> 0.7.0'
 
-
 pod 'AFNetworking-Synchronous'
 pod 'Reachability'
 pod 'JSONKit-NoWarning'

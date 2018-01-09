@@ -3,7 +3,7 @@
 //
 
 #include "FingerLockApi.h"
-//#include "Log.hh"
+
 #include <iostream>
 #include <stdlib.h>
 #include <openssl/md5.h>
@@ -88,8 +88,7 @@ std::string FingerLockApi::setTimeCmd(const char* time){
     unsigned  char *Bcd = new unsigned char[7] ;
     FingerLockApi::StrtoBCD((char *) time, Bcd);
     std::string cmdString = FingerLockApi::createNewCmd(TRANS_ENCODE, cmdbyte, (const char *) Bcd);
-   printf("setTimeCmd,%s",cmdString.c_str());
-    printf("...setTimeCmd,%s",cmdString.c_str());
+    printf("setTimeCmd,%s",cmdString.c_str());
     free(Bcd);
     return cmdString;
 }
@@ -260,7 +259,7 @@ std::string FingerLockApi::sendRandNumberCmd(){
     int len = 10;
     char cmdArray[len];
     cmdArray[0] =len;
-    cmdArray[1] = 0x00;
+    cmdArray[1] = TRANS_ENCODE;
     cmdArray[2] = 0x00;
     int randnumber = (rand() % (65535-10000))+ 10000;
     int randnumber2 = (rand() % (65535-10000))+ 10000;
@@ -323,9 +322,9 @@ std::string FingerLockApi::sendCheckCodeCmd(const char* appid){
     primary[4] = randnumber2 >> 8;
     primary[5] = randnumber2;
 
-   printf("md5pridata,%s",bytestoHexString((const char *)primary,8).c_str());
+    printf("md5pridata,%s",bytestoHexString((const char *)primary,8).c_str());
     std::string calMD5Reuslt = FingerLockApi::calMd5(primary);
-   printf("calmd5Resut,%s",calMD5Reuslt.c_str());
+    printf("calmd5Resut,%s",calMD5Reuslt.c_str());
     std::string appidHexString = appid;
     char* appidarray = hexstringToBytes(appidHexString);
     char randarray[4];
@@ -365,7 +364,7 @@ std::string FingerLockApi::sendCheckCodeCmd(const char* appid){
     cmdArray[28]=((crc >> 8) & 0xff);
     cmdArray[29]=(crc & 0xff);
     result = bytestoHexString(cmdArray,30);
-   printf("c++ sendAuthCode ,%s",result.c_str());
+    printf("c++ sendAuthCode ,%s",result.c_str());
     return result;
 }
 
@@ -456,7 +455,7 @@ std::string FingerLockApi::createUidImeiCmd(char cmdbyte,int uid,const char* ime
     cmdArray[9+imeiHexLen]=((crc >> 8) & 0xff);
     cmdArray[10+imeiHexLen]=(crc & 0xff);
     std::string resultcmd =  bytestoHexString(cmdArray,len);
-
+    free(imei);
     return resultcmd;
 
 }
@@ -495,6 +494,7 @@ std::string FingerLockApi::createUidTimeImeiCmd(char cmdbyte,int uid,const char*
     cmdArray[16+imeiHexLen]=((crc >> 8) & 0xff);
     cmdArray[17+imeiHexLen]=(crc & 0xff);
     std::string resultcmd =  bytestoHexString(cmdArray,len);
+    free(imei);
     return resultcmd;
 }
 
@@ -554,6 +554,12 @@ std::string FingerLockApi::deleteOneFingerprint(const char* id){
     return cmdString;
 }
 
+std::string FingerLockApi::deleteAllFingerprint(int uid){
+    char cmdbyte = 0x89;
+    std::string cmdString = FingerLockApi::createUidCmd(cmdbyte, uid);
+    return cmdString;
+}
+
 
 
 
@@ -573,6 +579,13 @@ std::string FingerLockApi::resetFkey(int uid){
 std::string FingerLockApi::getFkeyState(){
     char cmdbyte = 0x8C;
     std::string cmdString = FingerLockApi::createNewCmd(cmdbyte);
+    return cmdString;
+}
+
+
+std::string FingerLockApi::getFingerprintIds(int uid){
+    char cmdbyte = 0x8E;
+    std::string cmdString = FingerLockApi::createUidCmd(cmdbyte, uid);
     return cmdString;
 }
 
@@ -647,25 +660,22 @@ std::string  FingerLockApi::createNewCmd( char cmd) {
 
 
 std::string  FingerLockApi::createNewCmd( char cmd,int encode) {
-    std::string cmdstr = "";
-    int length = 6;
-    cmdstr+=length;
-    cmdstr+=encode;
-    cmdstr+=cmd;
+    int len =6;
+    char cmdArray[len];
+    cmdArray[0] = len;
+    cmdArray[1] = encode;
+    cmdArray[2] = cmd;
     int randnum = (10000+rand() )% 31111;
-    cmdstr+= randnum;
-    unsigned  short crc = calCRC((unsigned char *) cmdstr.data(), strlen(cmdstr.data()));
-    cmdstr+=((crc >> 8) & 0xff);
-    cmdstr+=(crc & 0xff);
-    std::string base64;
-    if(OPEN_ENCODE==1){
-//        std::string encodeCmdString = LockAES::encodeAES(aes_key,cmdstr);
-//        base64 = LockBASE64::base64_encodestring(encodeCmdString);
-    }else{
-        base64 = bytestoHexString(cmdstr.c_str(),strlen(cmdstr.c_str()));
+    cmdArray[3] = randnum;
+    char enccodear[len-2];
+    for(int i=0;i<(len-2);i++){
+        enccodear[i] = cmdArray[i];
     }
-
-    return base64;
+    unsigned  short crc = calCRC((unsigned char *) enccodear, len-2);
+    cmdArray[len-2]=((crc >> 8) & 0xff);
+    cmdArray[len-1]=(crc & 0xff);
+    std::string resultcmd =  bytestoHexString(cmdArray,len);
+    return resultcmd;
 }
 
 

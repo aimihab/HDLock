@@ -5,7 +5,9 @@
 #ifndef RSADEMO_FINGERLOCKAPI_H
 #define RSADEMO_FINGERLOCKAPI_H
 
+
 #include <string>
+
 
 
 class FingerLockApi {
@@ -48,9 +50,11 @@ public:
     static std::string enterFingerEditMode(int uid);
     static std::string inputFingerprint(const char* endtime);
     static std::string deleteOneFingerprint(const char* findgerprintId);
+    static std::string deleteAllFingerprint(int uid);
     static std::string exitFingerEditMode(int uid);
     static std::string resetFkey(int uid);
     static std::string getFkeyState();
+    static std::string getFingerprintIds(int uid);
 
     static std::string bytestoHexString(const char* bytes,int bytelength);
     static char*  hexstringToBytes(std::string s);

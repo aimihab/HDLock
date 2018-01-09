@@ -371,7 +371,7 @@ SingletonH
  @param failure 失败
  */
 -(void)gainUpdateFileWithSuffix:(NSString *)suffix
-                        success:(void(^)(NSString *token))success
+                        success:(void(^)(id obj))success
                          failure:(YZUserFailure)failure;
 /**
  上传文件
